@@ -6,7 +6,7 @@ A simple, interactive website that provides random answers to questions a user t
 
 ## Design and Features
 
-*   **Core Functionality:** Click a button to get a random answer.
+*   **Core Functionality:** Click a button to get a random answer. The answers include a mix of standard, weird, and random responses.
 *   **User Interface:**
     *   A main container to center the content.
     *   A title to instruct the user.
@@ -21,6 +21,5 @@ A simple, interactive website that provides random answers to questions a user t
 
 ## Current Task
 
-*   Add a high-quality "drop down" animation to the answer display.
-    *   Update `style.css` with the animation.
-    *   Update `main.js` to trigger the animation.
+*   Add weird and random answers to the list of possible answers.
+    *   Update `main.js` with the new answers.
