@@ -15,6 +15,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     overflow: hidden;
+    position: relative;
+    min-height: 300px;
 }
 
 h1 {
@@ -36,24 +38,115 @@ h1 {
     background-color: #0056b3;
 }
 
+#animation-container {
+    position: relative;
+    height: 200px;
+    margin-top: 2rem;
+}
+
+#piggy-bank {
+    width: 150px;
+    height: 150px;
+    background-color: #ffc0cb;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+#piggy-bank::before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-color: #ffc0cb;
+    border: 5px solid #f0f0f0;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    transform: rotate(45deg);
+}
+
+#piggy-bank::after {
+    content: '';
+    width: 10px;
+    height: 20px;
+    background-color: #e7a7b4;
+    position: absolute;
+    top: 30px;
+    left: 120px;
+    border-radius: 5px;
+}
+
+#note {
+    width: 100px;
+    height: 20px;
+    background-color: #fcfcac;
+    border: 1px solid #e6e696;
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    padding: 10px;
+    font-size: 0;
+}
+
 #answer-display {
-    margin-top: 1.5rem;
-    font-size: 1.2rem;
     font-weight: bold;
-    min-height: 2rem;
+    text-align: center;
 }
 
-.animate {
-    animation: dropDown 0.5s ease-in-out;
+.shake {
+    display: block !important;
+    animation: shake-piggy-bank 1s ease-in-out;
 }
 
-@keyframes dropDown {
+.fall {
+    display: block !important;
+    animation: fall-and-unroll-note 2s ease-in-out forwards;
+}
+
+@keyframes shake-piggy-bank {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translate(-50%, -50%) rotate(-15deg); }
+    20%, 40%, 60%, 80% { transform: translate(-50%, -50%) rotate(15deg); }
+}
+
+@keyframes fall-and-unroll-note {
     0% {
-        opacity: 0;
-        transform: translateY(-100%);
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+        opacity: 1;
+        height: 20px;
+        font-size: 0;
+        padding: 10px;
+    }
+    30% {
+        top: 100%;
+        transform: translate(-50%, 0) scale(0.2) rotate(360deg);
+        opacity: 1;
+        height: 20px;
+        font-size: 0;
+        padding: 10px;
+    }
+    60% {
+        top: 100%;
+        transform: translate(-50%, 0) scale(1) rotate(360deg);
+        opacity: 1;
+        height: 100px;
+        font-size: 1.2rem;
+        padding: 20px;
     }
     100% {
+        top: 100%;
+        transform: translate(-50%, 0) scale(1) rotate(360deg);
         opacity: 1;
-        transform: translateY(0);
+        height: 100px;
+        font-size: 1.2rem;
+        padding: 20px;
     }
 }

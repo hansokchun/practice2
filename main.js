@@ -27,19 +27,35 @@ const answers = [
 ];
 
 const answerButton = document.getElementById("answer-button");
+const piggyBank = document.getElementById("piggy-bank");
+const note = document.getElementById("note");
 const answerDisplay = document.getElementById("answer-display");
 
 answerButton.addEventListener("click", () => {
-    // Remove the animation class to reset
-    answerDisplay.classList.remove("animate");
+    // 1. Reset previous state
+    piggyBank.classList.remove("shake");
+    note.classList.remove("fall");
+    note.style.display = "none";
+    answerDisplay.textContent = "";
 
-    // Force a reflow to restart the animation
-    void answerDisplay.offsetWidth;
+    // 2. Show piggy bank and shake it
+    piggyBank.style.display = "block";
+    piggyBank.classList.add("shake");
 
-    const randomIndex = Math.floor(Math.random() * answers.length);
-    const randomAnswer = answers[randomIndex];
-    answerDisplay.textContent = randomAnswer;
+    // 3. Set a timer for the note to fall
+    setTimeout(() => {
+        // Hide piggy bank
+        piggyBank.style.display = "none";
+        piggyBank.classList.remove("shake");
 
-    // Add the class to trigger the animation
-    answerDisplay.classList.add("animate");
+        // Get a random answer
+        const randomIndex = Math.floor(Math.random() * answers.length);
+        const randomAnswer = answers[randomIndex];
+        answerDisplay.textContent = randomAnswer;
+
+        // Show and animate the note
+        note.style.display = "block";
+        note.classList.add("fall");
+
+    }, 1000); // 1s for shake animation
 });
