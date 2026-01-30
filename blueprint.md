@@ -17,11 +17,12 @@ A simple, interactive website that provides random answers to questions a user t
     *   A simple, clean font.
     *   Basic styling for the button and answer display.
 *   **Animation:**
-    *   A complex animation involving a piggy bank shaking, a note falling out, and the note unrolling to reveal the answer.
+    *   A complex animation involving a capsule opening to reveal a note that unrolls with the answer.
 
 ## Current Task
 
-*   Implement the new piggy bank animation.
-    *   Update `index.html` with new elements for the animation.
-    *   Update `style.css` with the new animation and styles.
-    *   Update `main.js` to orchestrate the animation.
+*   Fix the text visibility issue from the previous animation.
+*   Implement the new capsule animation.
+    *   Update `index.html` with new elements for the capsule animation.
+    *   Update `style.css` with the new animation and styles for the capsule.
+    *   Update `main.js` to orchestrate the capsule animation.

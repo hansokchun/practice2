@@ -27,35 +27,25 @@ const answers = [
 ];
 
 const answerButton = document.getElementById("answer-button");
-const piggyBank = document.getElementById("piggy-bank");
+const animationContainer = document.getElementById("animation-container");
 const note = document.getElementById("note");
 const answerDisplay = document.getElementById("answer-display");
+let isAnimating = false;
 
 answerButton.addEventListener("click", () => {
-    // 1. Reset previous state
-    piggyBank.classList.remove("shake");
-    note.classList.remove("fall");
-    note.style.display = "none";
-    answerDisplay.textContent = "";
+    if (isAnimating) return;
 
-    // 2. Show piggy bank and shake it
-    piggyBank.style.display = "block";
-    piggyBank.classList.add("shake");
+    isAnimating = true;
+    animationContainer.classList.add("animate");
 
-    // 3. Set a timer for the note to fall
-    setTimeout(() => {
-        // Hide piggy bank
-        piggyBank.style.display = "none";
-        piggyBank.classList.remove("shake");
+    // Get a random answer
+    const randomIndex = Math.floor(Math.random() * answers.length);
+    const randomAnswer = answers[randomIndex];
+    answerDisplay.textContent = randomAnswer;
+});
 
-        // Get a random answer
-        const randomIndex = Math.floor(Math.random() * answers.length);
-        const randomAnswer = answers[randomIndex];
-        answerDisplay.textContent = randomAnswer;
-
-        // Show and animate the note
-        note.style.display = "block";
-        note.classList.add("fall");
-
-    }, 1000); // 1s for shake animation
+// Reset animation when it's done
+note.addEventListener("animationend", () => {
+    animationContainer.classList.remove("animate");
+    isAnimating = false;
 });
