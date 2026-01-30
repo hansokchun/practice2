@@ -16,10 +16,11 @@ A simple, interactive website that provides random answers to questions a user t
     *   Centered layout.
     *   A simple, clean font.
     *   Basic styling for the button and answer display.
+*   **Animation:**
+    *   A "drop down" animation for the answer display.
 
 ## Current Task
 
-*   Create the initial version of the "Magic 8-Ball" website.
-    *   Create `index.html`.
-    *   Create `style.css`.
-    *   Create `main.js`.
+*   Add a high-quality "drop down" animation to the answer display.
+    *   Update `style.css` with the animation.
+    *   Update `main.js` to trigger the animation.

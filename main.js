@@ -20,7 +20,16 @@ const answerButton = document.getElementById("answer-button");
 const answerDisplay = document.getElementById("answer-display");
 
 answerButton.addEventListener("click", () => {
+    // Remove the animation class to reset
+    answerDisplay.classList.remove("animate");
+
+    // Force a reflow to restart the animation
+    void answerDisplay.offsetWidth;
+
     const randomIndex = Math.floor(Math.random() * answers.length);
     const randomAnswer = answers[randomIndex];
     answerDisplay.textContent = randomAnswer;
+
+    // Add the class to trigger the animation
+    answerDisplay.classList.add("animate");
 });
